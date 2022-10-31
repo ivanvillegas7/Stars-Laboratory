@@ -126,9 +126,11 @@ with  open("summary_z1_sun.txt", "r") as infile:
             
             L_ext_z1_s.append(float(vals[3]))
             
-        T_z1_s.append(float(vals[5]))
-        
-        L_z1_s.append(float(vals[3]))
+        if float(vals[1]) <= (5e9):
+            
+            T_z1_s.append(float(vals[5]))
+            
+            L_z1_s.append(float(vals[3]))
             
 with  open("summary_z2_sun.txt", "r") as infile:
     
@@ -158,17 +160,18 @@ with  open("summary_z2_sun.txt", "r") as infile:
             
             L_ext_z2_s.append(float(vals[3]))
             
-        T_z2_s.append(float(vals[5]))
-        
-        L_z2_s.append(float(vals[3]))
-        
-        L_pp_s.append(float(vals[18]))
-        
-        L_CNO_s.append(float(vals[19]))
-        
-        L_sun.append(float(vals[3]))
+        if float(vals[1]) <= (5e9):
             
-        
+            T_z2_s.append(float(vals[5]))
+            
+            L_z2_s.append(float(vals[3]))
+            
+            L_pp_s.append(float(vals[18]))
+            
+            L_CNO_s.append(float(vals[19]))
+            
+            L_sun.append(float(vals[3]))
+            
 
 plt.figure()
 
@@ -236,9 +239,11 @@ with  open("summary_z1_A5.txt", "r") as infile:
             
             L_ext_z1_A5.append(float(vals[3]))
             
-        T_z1_A5.append(float(vals[5]))
+        if float(vals[1]) <= (5.657*5e9):
         
-        L_z1_A5.append(float(vals[3]))
+            T_z1_A5.append(float(vals[5]))
+            
+            L_z1_A5.append(float(vals[3]))
             
 with  open("summary_z2_A5.txt", "r") as infile:
     
@@ -262,9 +267,11 @@ with  open("summary_z2_A5.txt", "r") as infile:
             
             L_ext_z2_A5.append(float(vals[3]))
             
-        T_z2_A5.append(float(vals[5]))
-        
-        L_z2_A5.append(float(vals[3]))
+        if float(vals[1]) <= (5.657*5e9):
+            
+            T_z2_A5.append(float(vals[5]))
+            
+            L_z2_A5.append(float(vals[3]))
 
 with  open("summary_z3_A5.txt", "r") as infile:
     
@@ -292,13 +299,15 @@ with  open("summary_z3_A5.txt", "r") as infile:
             
             L_ext_z3_A5.append(float(vals[3]))
             
-        T_z3_A5.append(float(vals[5]))
-        
-        L_z3_A5.append(float(vals[3]))
-        
-        L_pp_A5.append(float(vals[18]))
-        
-        L_CNO_A5.append(float(vals[19]))
+        if float(vals[1]) <= (5.657*5e9):
+            
+            T_z3_A5.append(float(vals[5]))
+            
+            L_z3_A5.append(float(vals[3]))
+            
+            L_pp_A5.append(float(vals[18]))
+            
+            L_CNO_A5.append(float(vals[19]))
 
 plt.figure()
 
@@ -365,9 +374,11 @@ with  open("summary_z1_F0.txt", "r") as infile:
             
             L_ext_z1_F0.append(float(vals[3]))
             
-        T_z1_F0.append(float(vals[5]))
-        
-        L_z1_F0.append(float(vals[3]))
+        if float(vals[1]) <= (3.238*5e9):
+            
+            T_z1_F0.append(float(vals[5]))
+            
+            L_z1_F0.append(float(vals[3]))
             
 with  open("summary_z2_F0.txt", "r") as infile:
     
@@ -391,9 +402,11 @@ with  open("summary_z2_F0.txt", "r") as infile:
             
             L_ext_z2_F0.append(float(vals[3]))
             
-        T_z2_F0.append(float(vals[5]))
-        
-        L_z2_F0.append(float(vals[3]))
+        if float(vals[1]) <= (3.238*5e9):
+            
+            T_z2_F0.append(float(vals[5]))
+            
+            L_z2_F0.append(float(vals[3]))
 
 with  open("summary_z3_F0.txt", "r") as infile:
     
@@ -421,13 +434,15 @@ with  open("summary_z3_F0.txt", "r") as infile:
             
             L_ext_z3_F0.append(float(vals[3]))
             
-        T_z3_F0.append(float(vals[5]))
-        
-        L_z3_F0.append(float(vals[3]))
-        
-        L_pp_F0.append(float(vals[18]))
-        
-        L_CNO_F0.append(float(vals[19]))
+        if float(vals[1]) <= (3.238*5e9):
+            
+            T_z3_F0.append(float(vals[5]))
+            
+            L_z3_F0.append(float(vals[3]))
+            
+            L_pp_F0.append(float(vals[18]))
+            
+            L_CNO_F0.append(float(vals[19]))
 
 plt.figure()
 
@@ -758,13 +773,13 @@ min_M5: int = np.argmin(np.array(delta_M5))
 
 L_pp: List[float] = [float((L_pp_A5[0])/10**(L_z3_A5[0])),\
                      float((L_pp_F0[0])/10**(L_z3_F0[0])),\
-                     float((L_pp_s[0])/10**(L_sun[0])), \
+                     float((L_pp_s[-1])/10**(L_sun[-1])), \
                      float((L_pp_M0[int(min_M0)])/10**(L_z3_M0[int(min_M0)])),\
                      float((L_pp_M5[int(min_M5)])/10**(L_z3_M5[int(min_M5)]))]
 
 L_CNO: List[float] = [float((L_CNO_A5[0])/10**(L_z3_A5[0])),\
                       float((L_CNO_F0[0])/10**(L_z3_F0[0])),\
-                      float((L_CNO_s[0])/10**(L_sun[0])),\
+                      float((L_CNO_s[-1])/10**(L_sun[-1])),\
                       float((L_CNO_M0[int(min_M0)])/10**(L_z3_M0[int(min_M0)])),\
                       float((L_CNO_M5[int(min_M5)])/10**(L_z3_M5[int(min_M5)]))]
 
